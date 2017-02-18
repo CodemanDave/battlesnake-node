@@ -83,7 +83,7 @@ router.post('/move', function (req, res) {
     }
   }
 
-  gen_move = 'up';
+  gen_move = 'down';
   check_if_firstrow();
   check_if_edge();
 
