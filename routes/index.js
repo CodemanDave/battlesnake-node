@@ -34,15 +34,15 @@ router.post('/move', function (req, res) {
       gen_move = 'right';
     }
     //top right corner of wall
-    else if(req.body.snakes[0].coords[0][0] == 19 && req.body.snakes[0].coords[0][1] == 0) {
+    else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == 0) {
       gen_move = 'down';
     }
     //bottom right corner of wall
-    else if(req.body.snakes[0].coords[0][0] == 19 && req.body.snakes[0].coords[0][1] == 19) {
+    else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
       gen_move = 'left';
     }
     //bottom left corner of wall
-    else if(req.body.snakes[0].coords[0][0] == 0 && req.body.snakes[0].coords[0][1] == 19) {
+    else if(req.body.snakes[0].coords[0][0] == 0 && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
       gen_move = 'up';
     }
   }
