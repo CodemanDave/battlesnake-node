@@ -81,8 +81,8 @@ router.post('/move', function (req, res) {
   }
 
   gen_move = 'up';
-  check_if_edge();
   check_if_firstrow();
+  check_if_edge();
 
   // Response data
   var data = {
