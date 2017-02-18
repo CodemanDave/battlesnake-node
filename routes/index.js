@@ -36,7 +36,7 @@ router.post('/move', function (req, res) {
       }
       //if next body is to right of head
       else if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] + 1) {
-        gen_move = 'left';
+        gen_move = 'down';
       }
     }
     //top right corner of wall
@@ -54,22 +54,22 @@ router.post('/move', function (req, res) {
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
       //if next body part is above head
       if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
-        gen_move = 'right';
+        gen_move = 'left';
       }
       //if next body part is to left of head
       else if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
-        gen_move = 'left';
+        gen_move = 'up';
       }
     }
     //bottom left corner of wall
     else if(req.body.snakes[0].coords[0][0] == 0 && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
       //if next body part is to right of head
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] + 1) {
-        gen_move = 'right';
+        gen_move = 'up';
       }
       //if next body part is above head
       else if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
-        gen_move = 'left';
+        gen_move = 'right';
       }
     }
     else {
