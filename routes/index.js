@@ -60,7 +60,7 @@ router.post('/move', function (req, res) {
       gen_move = 'up';
     }
     else {
-      gen_move = 'up';
+      gen_move = 'left';
     }
   }
 
