@@ -46,7 +46,6 @@ router.post('/move', function (req, res) {
     }
   }
 
-/*
   function check_if_foodrightleft() {
     //if food is to the right somewhere close
     if(req.body.snakes[0].coords[0][0] >= req.body.food[0][0]) {
@@ -57,9 +56,7 @@ router.post('/move', function (req, res) {
       gen_move = 'right';
     }
   }
-  */
 
-/*
   function check_if_topwall() {
     //if we reach the top
     if(req.body.snakes[0].coords[0][1] == 0) {
@@ -67,12 +64,14 @@ router.post('/move', function (req, res) {
       //remove this line
       gen_move = 'left';
     }
+    else {
+      gen_move = 'right';
+    }
   }
-*/
 
   check_if_edge();
-  //check_if_foodrightleft();
-  //check_if_topwall();
+  check_if_foodrightleft();
+  check_if_topwall();
 
   // Response data
   var data = {
