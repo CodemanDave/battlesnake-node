@@ -12,7 +12,7 @@ router.post('/start', function (req, res) {
     color: "#DFFF00",
     name: "The Intimidating Saj",
     head_url: "http://www.placecage.com/c/200/200", // optional, but encouraged!
-    taunt: "Let's do thisss thang!", // optional, but encouraged!
+    taunt: "Good meme yeah?", // optional, but encouraged!
   }
 
   return res.json(data)
@@ -26,7 +26,6 @@ router.post('/move', function (req, res) {
 
   console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
   console.log(req.body.food);
-  //console.log(req.body);
 
   function check_if_edge() {
     //head at top left corner of wall
@@ -37,14 +36,14 @@ router.post('/move', function (req, res) {
       }
       //if next body is to right of head
       else if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] + 1) {
-        gen_move = 'left';
+        gen_move = 'down';
       }
     }
     //top right corner of wall
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == 0) {
       //if next body part is to left of head
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
-        gen_move = 'right';
+        gen_move = 'down';
       }
       //if next body part is below head
       else if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] + 1) {
@@ -53,43 +52,37 @@ router.post('/move', function (req, res) {
     }
     //bottom right corner of wall
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
-      gen_move = 'left';
+      //if next body part is above head
+      if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
+        gen_move = 'left';
+      }
+      //if next body part is to left of head
+      else if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
+        gen_move = 'up';
+      }
     }
     //bottom left corner of wall
     else if(req.body.snakes[0].coords[0][0] == 0 && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
-      gen_move = 'up';
-    }
-    else {
-      gen_move = 'left';
-    }
-  }
-
-  function check_if_foodrightleft() {
-    //if food is to the right somewhere close
-    if(req.body.snakes[0].coords[0][0] >= req.body.food[0][0]) {
-      gen_move = 'left';
-    }
-    //if food is to the left somewhere close
-    else if(req.body.snakes[0].coords[0][0] <= req.body.food[0][0]) {
-      gen_move = 'right';
+      //if next body part is to right of head
+      if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] + 1) {
+        gen_move = 'up';
+      }
+      //if next body part is above head
+      else if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
+        gen_move = 'right';
+      }
     }
   }
 
-  function check_if_topwall() {
-    //if we reach the top
+  function check_if_firstrow() {
     if(req.body.snakes[0].coords[0][1] == 0) {
-      //do something to make a smart choice of left or right
-      //remove this line
-      gen_move = 'left';
-    }
-    else {
       gen_move = 'right';
     }
   }
 
+  gen_move = 'up';
   check_if_edge();
-  //check_if_foodrightleft();
-  //check_if_topwall();
+  check_if_firstrow();
 
   // Response data
   var data = {
