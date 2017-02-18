@@ -72,6 +72,9 @@ router.post('/move', function (req, res) {
         gen_move = 'right';
       }
     }
+    else {
+      check_if_firstrow();
+    }
   }
 
   function check_if_firstrow() {
