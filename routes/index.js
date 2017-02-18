@@ -29,14 +29,27 @@ router.post('/move', function (req, res) {
   //console.log(req.body);
 
   function check_if_edge() {
-    //top left corner of wall
+    //head at top left corner of wall
     if(req.body.snakes[0].coords[0][0] == 0 && req.body.snakes[0].coords[0][1] == 0) {
-      //if(req.body.snakes[0].coords[1][0])
+      //if next body part is below head
+      if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] + 1) {
         gen_move = 'right';
+      }
+      //if next body is to right of head
+      else if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] + 1) {
+        gen_move = 'left';
+      }
     }
     //top right corner of wall
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == 0) {
-      gen_move = 'down';
+      //if next body part is to left of head
+      if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
+        gen_move = 'right';
+      }
+      //if next body part is below head
+      else if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] + 1) {
+        gen_move = 'left';
+      }
     }
     //bottom right corner of wall
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
