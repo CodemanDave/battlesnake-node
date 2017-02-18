@@ -43,7 +43,7 @@ router.post('/move', function (req, res) {
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == 0) {
       //if next body part is to left of head
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
-        gen_move = 'down';
+        gen_move = 'right';
       }
       //if next body part is below head
       else if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] + 1) {
