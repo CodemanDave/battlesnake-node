@@ -46,6 +46,9 @@ router.post('/move', function (req, res) {
     else if(req.body.snakes[0].coords[0][0] == 0 && req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
       gen_move = 'up';
     }
+    else {
+      gen_move = 'up';
+    }
   }
 
   function check_if_foodrightleft() {
@@ -72,8 +75,8 @@ router.post('/move', function (req, res) {
   }
 
   check_if_edge();
-  check_if_foodrightleft();
-  check_if_topwall();
+  //check_if_foodrightleft();
+  //check_if_topwall();
 
   // Response data
   var data = {
