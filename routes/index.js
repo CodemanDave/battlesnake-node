@@ -24,14 +24,15 @@ router.post('/move', function (req, res) {
 
   var gen_move;
 
-  console.log(req.body.snakes[0].coords[0]); //contains the coordinates of the snakes' coordinates
+  console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
   console.log(req.body.food);
   //console.log(req.body);
 
   function check_if_edge() {
     //top left corner of wall
     if(req.body.snakes[0].coords[0][0] == 0 && req.body.snakes[0].coords[0][1] == 0) {
-      gen_move = 'right';
+      //if(req.body.snakes[0].coords[1][0])
+        gen_move = 'right';
     }
     //top right corner of wall
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == 0) {
