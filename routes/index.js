@@ -95,7 +95,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'left') {
           gen_move = 'right';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
+        else if(gen_move == 'none') {
           gen_move = 'right';
         }
       }
@@ -105,10 +105,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'right') {
           gen_move = 'left';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
-          gen_move = 'left';
-        }
-        else if(gen_move == 'up') {
+        else if(gen_move == 'none') {
           gen_move = 'left';
         }
       }
@@ -125,7 +122,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'left') {
           gen_move = 'right';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
+        else if(gen_move == 'none') {
           gen_move = 'right';
         }
       }
@@ -136,10 +133,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'right') {
           gen_move = 'left';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
-          gen_move = 'left';
-        }
-        else if(gen_move == 'up') {
+        else if(gen_move == 'none') {
           gen_move = 'left';
         }
       }
@@ -156,7 +150,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'up') {
           gen_move = 'down';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
+        else if(gen_move == 'none') {
           gen_move = 'down';
         }
       }
@@ -167,10 +161,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'down') {
           gen_move = 'up';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
-          gen_move = 'up';
-        }
-        else if(gen_move == 'up') {
+        else if(gen_move == 'none') {
           gen_move = 'up';
         }
       }
@@ -187,7 +178,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'up'){
           gen_move = 'down';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
+        else if(gen_move == 'none') {
           gen_move = 'down';
         }
       }
@@ -198,10 +189,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'down') {
           gen_move = 'up';
         }
-        else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
-          gen_move = 'up';
-        }
-        else if(gen_move == 'up') {
+        else if(gen_move == 'none') {
           gen_move = 'up';
         }
       }
@@ -223,10 +211,10 @@ router.post('/move', function (req, res) {
       //if head of snake is to left of food item
       if(req.body.snakes[0].coords[0][0] < food_array_x_coords[i]) {
         //if there is a food item to right that is 5 spaces or less away in x-dimension
-        //if(req.body.snakes[0].coords[0][0] >= food_array_x_coords[i] - 5 && food_array_x_coords[i] - 5 >= 0) {
+        if(req.body.snakes[0].coords[0][0] >= food_array_x_coords[i] - 5 && food_array_x_coords[i] - 5 >= 0) {
           //food is close by to the right
           food_close_to_right = true;
-        //}
+        }
       }
       //if food is in same column as head of snake
       if(req.body.snakes[0].coords[0][0] == food_array_x_coords[i]) {
@@ -253,10 +241,10 @@ router.post('/move', function (req, res) {
       //if head of snake is to right of food item
       if(req.body.snakes[0].coords[0][0] > food_array_x_coords[i]) {
         //if there is a food item to left that is 5 spaces or less away in x-dimension
-        //if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
+        if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
           //food is close by to left
           food_close_to_left = true;
-        //}
+        }
       }
       //if food is in same column as head of snake
       if(req.body.snakes[0].coords[0][0] == food_array_x_coords[i]) {
@@ -292,6 +280,9 @@ router.post('/move', function (req, res) {
     }
     else if(food_close_to_up == true) {
       gen_move = 'up';
+    }
+    else {
+      gen_move = 'none';
     }
   }
 
