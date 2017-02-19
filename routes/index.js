@@ -24,7 +24,7 @@ router.post('/move', function (req, res) {
 
   var gen_move;
 
-  console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
+  //console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
   console.log(req.body.food);
 
   function check_if_edge() {
@@ -108,8 +108,6 @@ router.post('/move', function (req, res) {
   check_if_rightcolumn();
   check_if_leftcolumn();
   check_if_edge();
-
-  console.log(gen_move);
 
   // Response data
   var data = {
