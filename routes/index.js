@@ -295,6 +295,8 @@ router.post('/move', function (req, res) {
   check_if_leftcolumn();
   check_if_edge();
 
+  console.log(gen_move);
+
   // Response data
   var data = {
     //one of: ['up','down','left','right']
