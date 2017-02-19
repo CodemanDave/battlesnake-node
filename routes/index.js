@@ -22,7 +22,8 @@ router.post('/start', function (req, res) {
 router.post('/move', function (req, res) {
   // NOTE: Do something here to generate your move
 
-  var gen_move;
+  var gen_move; //variable where we store the generated move
+  var food_array = [];
 
   //console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
   console.log(req.body.food);
@@ -130,7 +131,17 @@ router.post('/move', function (req, res) {
     }
   }
 
+  function store_food_location_into_array() {
+    for(var i = 0; i < req.body.food.length; i++) {
+      console.log(req.body.food[i][0]);
+    }
+  }
+
+  //initially set the default move to up, then perform many checks
+  //based on result of the checks, make changes accordingly in functions
+  //if no change is made, then the default move of up will be sent to server
   gen_move = 'up';
+  store_food_location_into_array();
   check_if_firstrow();
   check_if_bottomrow();
   check_if_rightcolumn();
