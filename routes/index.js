@@ -292,13 +292,19 @@ router.post('/move', function (req, res) {
   gen_move = 'up';
   store_food_location_into_array();
   look_for_food();
+
+  //tests
+  console.log("gen move after look_for_food function:" + gen_move);
+
   check_if_firstrow();
+
+  //tests
+  console.log("gen move after check_if_firstrow function:" + gen_move);
+
   check_if_bottomrow();
   check_if_rightcolumn();
   check_if_leftcolumn();
   check_if_edge();
-
-  console.log(gen_move);
 
   // Response data
   var data = {
