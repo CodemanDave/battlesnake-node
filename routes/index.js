@@ -157,7 +157,9 @@ router.post('/move', function (req, res) {
         }
       }
     }
-    gen_move = 'right';
+    if(food_close_to_right == true) {
+      gen_move = 'right';
+    }
   }
 
   //initially set the default move to up, then perform many checks
