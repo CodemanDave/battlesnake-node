@@ -95,7 +95,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'left') {
           gen_move = 'right';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'right';
         }
       }
@@ -105,7 +105,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'right') {
           gen_move = 'left';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'left';
         }
       }
@@ -122,7 +122,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'left') {
           gen_move = 'right';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'right';
         }
       }
@@ -133,7 +133,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'right') {
           gen_move = 'left';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'left';
         }
       }
@@ -150,7 +150,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'up') {
           gen_move = 'down';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'down';
         }
       }
@@ -161,7 +161,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'down') {
           gen_move = 'up';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'up';
         }
       }
@@ -178,7 +178,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'up'){
           gen_move = 'down';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'down';
         }
       }
@@ -189,7 +189,7 @@ router.post('/move', function (req, res) {
         if(gen_move == 'down') {
           gen_move = 'up';
         }
-        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+        else if(gen_move != 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'up';
         }
       }
