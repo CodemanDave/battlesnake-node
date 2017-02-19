@@ -23,7 +23,8 @@ router.post('/move', function (req, res) {
   // NOTE: Do something here to generate your move
 
   var gen_move; //variable where we store the generated move
-  var food_array = [];
+  var food_array_x_coords = [];
+  var food_array_y_coords = [];
 
   //console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
   console.log(req.body.food);
@@ -132,8 +133,12 @@ router.post('/move', function (req, res) {
   }
 
   function store_food_location_into_array() {
+    //loop through the food array
     for(var i = 0; i < req.body.food.length; i++) {
-      console.log(req.body.food[i][0]);
+      //store the x coordinates of the food locations into an array
+      food_array_x_coords[i] = req.body.food[i][0];
+      //store the y coordinates of the food locations into an array
+      food_array_y_coords[i] = req.body.food[i][1];
     }
   }
 
@@ -147,6 +152,15 @@ router.post('/move', function (req, res) {
   check_if_rightcolumn();
   check_if_leftcolumn();
   check_if_edge();
+
+  //test
+  for(var i = 0; i < food_array_x_coords.length; i++) {
+    console.log(food_array_x_coords[i]);
+  }
+
+  for(var j = 0; j < food_array_y_coords.length; j++) {
+    console.log(food_array_y_coords[j]);
+  }
 
   // Response data
   var data = {
