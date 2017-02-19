@@ -75,30 +75,58 @@ router.post('/move', function (req, res) {
   }
 
   function check_if_firstrow() {
-    //if we are at top row just move right
+    //if we are at top row
     if(req.body.snakes[0].coords[0][1] == 0) {
-      gen_move = 'right';
+      //if we have a body part to our left
+      if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
+        gen_move = 'right';
+      }
+      //we must have a body part to our right
+      else {
+        gen_move = 'left';
+      }
     }
   }
 
   function check_if_bottomrow() {
-    //if we are at bottom row just move right
+    //if we are at bottom row
     if(req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
-      gen_move = 'right';
+      //if we have a body part to our left
+      if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
+        gen_move = 'right';
+      }
+      //we must have a body part to our right
+      else {
+        gen_move = 'left';
+      }
     }
   }
 
   function check_if_rightcolumn() {
-    //if we are at right column wall just move down
+    //if we are at right column wall
     if(req.body.snakes[0].coords[0][0] == (req.body.width - 1)) {
-      gen_move = 'down';
+      //if we have a body part above us
+      if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
+        gen_move = 'down';
+      }
+      //we must have a body part below us
+      else {
+        gen_move = 'up';
+      }
     }
   }
 
   function check_if_leftcolumn() {
-    //if we are at left column wall just move down
+    //if we are at left column wall
     if(req.body.snakes[0].coords[0][0] == 0) {
-      gen_move = 'down';
+      //if we have a body part above us
+      if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
+        gen_move = 'down';
+      }
+      //we must have a body part below us
+      else {
+        gen_move = 'up';
+      }
     }
   }
 
