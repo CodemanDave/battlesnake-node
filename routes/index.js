@@ -108,6 +108,9 @@ router.post('/move', function (req, res) {
         else if(gen_move == 'up' && gen_move != 'down' && gen_move != 'right' && gen_move != 'left') {
           gen_move = 'left';
         }
+        else if(gen_move == 'up') {
+          gen_move = 'left';
+        }
       }
     }
   }
