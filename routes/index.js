@@ -150,15 +150,50 @@ router.post('/move', function (req, res) {
 
   function look_for_food() {
     for(var i = 0; i < food_array_x_coords.length; i++) {
+      //if head of snake is to left of food item
       if(req.body.snakes[0].coords[0][0] < food_array_x_coords[i]) {
+        //if there is a food item to right that is 5 spaces or less away in x-dimension
         if(req.body.snakes[0].coords[0][0] >= food_array_x_coords[i] - 5 && food_array_x_coords[i] - 5 >= 0) {
           //food is close by to the right
           food_close_to_right = true;
         }
       }
+      //if head of snake is to right of food item
+      if(req.body.snakes[0].coords[0][0] > food_array_x_coords[i]) {
+        //if there is a food item to left that is 5 spaces or less away in x-dimension
+        if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
+          //food is close by to left
+          food_close_to_left = true;
+        }
+      }
+      //if head of snake is above food item
+      if(req.body.snakes[0].coords[0][1] < food_array_y_coords[i]) {
+        //if there is a food item below that is 5 spaces or less away in y-dimension
+        if(req.body.snakes[0].coords[0][1] >= food_array_y_coords[i] - 5 && food_array_y_coords[i] - 5 >= 0) {
+          //food is close by downwards
+          food_close_to_down = true;
+        }
+      }
+      //if head of snake is below food item
+      if(req.body.snakes[0].coords[0][1] > food_array_y_coords[i]) {
+        //if there is a food item above that is 5 spaces or less away in y-dimension
+        if(req.body.snakes[0].coords[0][1] <= food_array_y_coords[i] + 5 && food_array_y_coords[i] + 5 <= (req.body.height - 1)) {
+          //food is close by upwards
+          food_close_to_up = true;
+        }
+      }
     }
     if(food_close_to_right == true) {
       gen_move = 'right';
+    }
+    else if(food_close_to_left == true) {
+      gen_move = 'left';
+    }
+    else if(food_close_to_down == true) {
+      gen_move = 'down';
+    }
+    else if(food_close_to_up == true) {
+      gen_move = 'up';
     }
   }
 
