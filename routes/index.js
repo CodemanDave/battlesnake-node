@@ -31,7 +31,7 @@ router.post('/move', function (req, res) {
   var snakes_array_y_coords = []; //array containing y coordinates of opponent snakes
 
   //console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
-  console.log(req.body.snakes);
+  console.log(req.body.snakes.coords);
 
   function check_if_edge() {
     //head at top left corner of wall
@@ -148,7 +148,7 @@ router.post('/move', function (req, res) {
 
   function store_snakes_location_into_array() {
     //loop through the snakes array (skip index 0 since it is our snake)
-    for(var i = 1; i < req.body.snakes.length; i++) {
+    for(var i = 1; i < req.body.snakes.coords.length; i++) {
       snakes_array_x_coords[i] = req.body.snakes[i][0];
     }
   }
