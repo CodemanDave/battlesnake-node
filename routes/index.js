@@ -27,11 +27,13 @@ router.post('/move', function (req, res) {
   var food_array_x_coords = []; //array containing x coordinates of food items
   var food_array_y_coords = []; //array containing y coordinates of food items
 
-  var snakes_array_x_coords = []; //array containing x coordinates of opponent snakes
-  var snakes_array_y_coords = []; //array containing y coordinates of opponent snakes
+  var food_close_to_right = false;
+  var food_close_to_left = false;
+  var food_close_to_up = false;
+  var food_close_to_down = false;
 
   //console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
-  console.log(req.body.snakes.coords);
+  console.log(req.body.food);
 
   function check_if_edge() {
     //head at top left corner of wall
@@ -146,11 +148,16 @@ router.post('/move', function (req, res) {
     }
   }
 
-  function store_snakes_location_into_array() {
-    //loop through the snakes array (skip index 0 since it is our snake)
-    for(var i = 1; i < req.body.snakes.coords.length; i++) {
-      snakes_array_x_coords[i] = req.body.snakes[i][0];
+  function look_for_food() {
+    for(var i = 0; i < food_array_x_coords.length; i++) {
+      if(req.body.snakes[0].coords[0][0] < food_array_x_coords[i]) {
+        if(req.body.snakes[0].coords[0][0] >= food_array_x_coords[i] - 5 && food_array_x_coords[i] - 5 >= 0) {
+          //food is close by to the right
+          food_close_to_right = true;
+        }
+      }
     }
+    gen_move = 'right';
   }
 
   //initially set the default move to up, then perform many checks
@@ -158,7 +165,7 @@ router.post('/move', function (req, res) {
   //if no change is made, then the default move of up will be sent to server
   gen_move = 'up';
   store_food_location_into_array();
-  store_snakes_location_into_array();
+  look_for_food();
   check_if_firstrow();
   check_if_bottomrow();
   check_if_rightcolumn();
