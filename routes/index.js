@@ -23,11 +23,15 @@ router.post('/move', function (req, res) {
   // NOTE: Do something here to generate your move
 
   var gen_move; //variable where we store the generated move
-  var food_array_x_coords = [];
-  var food_array_y_coords = [];
+
+  var food_array_x_coords = []; //array containing x coordinates of food items
+  var food_array_y_coords = []; //array containing y coordinates of food items
+
+  var snakes_array_x_coords = []; //array containing x coordinates of opponent snakes
+  var snakes_array_y_coords = []; //array containing y coordinates of opponent snakes
 
   //console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
-  console.log(req.body.food);
+  console.log(req.body.snakes);
 
   function check_if_edge() {
     //head at top left corner of wall
@@ -142,25 +146,24 @@ router.post('/move', function (req, res) {
     }
   }
 
+  function store_snakes_location_into_array() {
+    //loop through the snakes array (skip index 0 since it is our snake)
+    for(var i = 1; i < req.body.snakes.length; i++) {
+      snakes_array_x_coords[i] = req.body.snakes[i][0];
+    }
+  }
+
   //initially set the default move to up, then perform many checks
   //based on result of the checks, make changes accordingly in functions
   //if no change is made, then the default move of up will be sent to server
   gen_move = 'up';
   store_food_location_into_array();
+  store_snakes_location_into_array();
   check_if_firstrow();
   check_if_bottomrow();
   check_if_rightcolumn();
   check_if_leftcolumn();
   check_if_edge();
-
-  //test
-  for(var i = 0; i < food_array_x_coords.length; i++) {
-    console.log(food_array_x_coords[i]);
-  }
-
-  for(var j = 0; j < food_array_y_coords.length; j++) {
-    console.log(food_array_y_coords[j]);
-  }
 
   // Response data
   var data = {
