@@ -91,11 +91,19 @@ router.post('/move', function (req, res) {
     if(req.body.snakes[0].coords[0][1] == 0) {
       //if we have a body part to our left
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
-        gen_move = 'right';
+        //gen_move = 'right';
+        look_for_food();
+        if(gen_move == 'left') {
+          gen_move = 'right';
+        }
       }
       //we must have a body part to our right
       else {
-        gen_move = 'left';
+        //gen_move = 'left';
+        look_for_food();
+        if(gen_move == 'right') {
+          gen_move = 'left';
+        }
       }
     }
   }
@@ -105,11 +113,19 @@ router.post('/move', function (req, res) {
     if(req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
       //if we have a body part to our left
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
-        gen_move = 'right';
+        //gen_move = 'right';
+        look_for_food();
+        if(gen_move == 'left') {
+          gen_move = 'right';
+        }
       }
       //we must have a body part to our right
       else {
-        gen_move = 'left';
+        //gen_move = 'left';
+        look_for_food();
+        if(gen_move == 'right') {
+          gen_move = 'left';
+        }
       }
     }
   }
@@ -119,11 +135,19 @@ router.post('/move', function (req, res) {
     if(req.body.snakes[0].coords[0][0] == (req.body.width - 1)) {
       //if we have a body part above us
       if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
-        gen_move = 'down';
+        //gen_move = 'down';
+        look_for_food();
+        if(gen_move == 'up') {
+          gen_move = 'down';
+        }
       }
       //we must have a body part below us
       else {
-        gen_move = 'up';
+        //gen_move = 'up';
+        look_for_food();
+        if(gen_move == 'down') {
+          gen_move = 'up';
+        }
       }
     }
   }
@@ -133,11 +157,19 @@ router.post('/move', function (req, res) {
     if(req.body.snakes[0].coords[0][0] == 0) {
       //if we have a body part above us
       if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
-        gen_move = 'down';
+        //gen_move = 'down';
+        look_for_food();
+        if(gen_move == 'up'){
+          gen_move = 'down';
+        }
       }
       //we must have a body part below us
       else {
-        gen_move = 'up';
+        //gen_move = 'up';
+        look_for_food();
+        if(gen_move == 'down') {
+          gen_move = 'up';
+        }
       }
     }
   }
