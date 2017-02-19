@@ -91,20 +91,21 @@ router.post('/move', function (req, res) {
     if(req.body.snakes[0].coords[0][1] == 0) {
       //if we have a body part to our left
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
-        //gen_move = 'right';
         look_for_food();
-
-        console.log(gen_move);
-
         if(gen_move == 'left') {
+          gen_move = 'right';
+        }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
           gen_move = 'right';
         }
       }
       //we must have a body part to our right
       else {
-        //gen_move = 'left';
         look_for_food();
         if(gen_move == 'right') {
+          gen_move = 'left';
+        }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
           gen_move = 'left';
         }
       }
