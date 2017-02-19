@@ -72,19 +72,41 @@ router.post('/move', function (req, res) {
         gen_move = 'right';
       }
     }
-    else {
-      check_if_firstrow();
-    }
   }
 
   function check_if_firstrow() {
+    //if we are at top row just move right
     if(req.body.snakes[0].coords[0][1] == 0) {
       gen_move = 'right';
     }
   }
 
-  gen_move = 'down';
+  function check_if_bottomrow() {
+    //if we are at bottom row just move right
+    if(req.body.snakes[0].coords[0][1] == (req.body.height - 1)) {
+      gen_move = 'right';
+    }
+  }
+
+  function check_if_rightcolumn() {
+    //if we are at right column wall just move down
+    if(req.body.snakes[0].coords[0][0] == (req.body.width - 1)) {
+      gen_move = 'down';
+    }
+  }
+
+  function check_if_leftcolumn() {
+    //if we are at left column wall just move down
+    if(req.body.snakes[0].coords[0][0] == 0) {
+      gen_move = 'down';
+    }
+  }
+
+  gen_move = 'up';
   check_if_firstrow();
+  check_if_bottomrow();
+  check_if_rightcolumn();
+  check_if_leftcolumn();
   check_if_edge();
 
   console.log(gen_move);
