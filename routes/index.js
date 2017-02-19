@@ -99,7 +99,7 @@ router.post('/move', function (req, res) {
           gen_move = 'right';
         }
       }
-      //we must have a body part to our right
+      //we must have a body part to our right or below us
       else {
         look_for_food();
         if(gen_move == 'right') {
@@ -122,12 +122,18 @@ router.post('/move', function (req, res) {
         if(gen_move == 'left') {
           gen_move = 'right';
         }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+          gen_move = 'right';
+        }
       }
-      //we must have a body part to our right
+      //we must have a body part to our right or above us
       else {
         //gen_move = 'left';
         look_for_food();
         if(gen_move == 'right') {
+          gen_move = 'left';
+        }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
           gen_move = 'left';
         }
       }
@@ -144,12 +150,18 @@ router.post('/move', function (req, res) {
         if(gen_move == 'up') {
           gen_move = 'down';
         }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+          gen_move = 'down';
+        }
       }
-      //we must have a body part below us
+      //we must have a body part below us or to our left
       else {
         //gen_move = 'up';
         look_for_food();
         if(gen_move == 'down') {
+          gen_move = 'up';
+        }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
           gen_move = 'up';
         }
       }
@@ -166,12 +178,18 @@ router.post('/move', function (req, res) {
         if(gen_move == 'up'){
           gen_move = 'down';
         }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
+          gen_move = 'down';
+        }
       }
-      //we must have a body part below us
+      //we must have a body part below us or to our right
       else {
         //gen_move = 'up';
         look_for_food();
         if(gen_move == 'down') {
+          gen_move = 'up';
+        }
+        else if(gen_move != 'up' || gen_move != 'down' || gen_move != 'right' || gen_move != 'left') {
           gen_move = 'up';
         }
       }
