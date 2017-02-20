@@ -108,6 +108,9 @@ router.post('/move', function (req, res) {
         else if(gen_move === 'none') {
           gen_move = 'left';
         }
+        else if(gen_move === 'up') {
+          gen_move = 'left';
+        }
       }
     }
   }
