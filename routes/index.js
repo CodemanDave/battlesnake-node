@@ -14,7 +14,7 @@ router.post('/start', function (req, res) {
   // Response data
   var data = {
     color: "#DFFF00",
-    name: "The Intimidating Saj",
+    name: "Naagin waadon ki agni pariksha",
     head_url: "http://www.placecage.com/c/200/200", // optional, but encouraged!
     taunt: "Good meme yeah?", // optional, but encouraged!
   }
