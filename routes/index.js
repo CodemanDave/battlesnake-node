@@ -226,6 +226,7 @@ router.post('/move', function (req, res) {
           //if there is a food item below that is 5 spaces or less away in y-dimension
           if(req.body.snakes[0].coords[0][1] >= food_array_y_coords[i] - 5 && food_array_y_coords[i] - 5 >= 0) {
             //food is close by downwards
+            food_close_to_right = false;
             food_close_to_down = true;
             break;
           }
@@ -235,6 +236,7 @@ router.post('/move', function (req, res) {
           //if there is a food item above that is 5 spaces or less away in y-dimension
           if(req.body.snakes[0].coords[0][1] <= food_array_y_coords[i] + 5 && food_array_y_coords[i] + 5 <= (req.body.height - 1)) {
             //food is close by upwards
+            food_close_to_right = false;
             food_close_to_up = true;
             break;
           }
@@ -256,6 +258,7 @@ router.post('/move', function (req, res) {
           //if there is a food item below that is 5 spaces or less away in y-dimension
           if(req.body.snakes[0].coords[0][1] >= food_array_y_coords[i] - 5 && food_array_y_coords[i] - 5 >= 0) {
             //food is close by downwards
+            food_close_to_left = false;
             food_close_to_down = true;
             break;
           }
@@ -265,6 +268,7 @@ router.post('/move', function (req, res) {
           //if there is a food item above that is 5 spaces or less away in y-dimension
           if(req.body.snakes[0].coords[0][1] <= food_array_y_coords[i] + 5 && food_array_y_coords[i] + 5 <= (req.body.height - 1)) {
             //food is close by upwards
+            food_close_to_left = false;
             food_close_to_up = true;
             break;
           }
@@ -275,13 +279,13 @@ router.post('/move', function (req, res) {
     if(food_close_to_right == true) {
       gen_move = 'right';
     }
-    if(food_close_to_left == true) {
+    else if(food_close_to_left == true) {
       gen_move = 'left';
     }
-    if(food_close_to_down == true) {
+    else if(food_close_to_down == true) {
       gen_move = 'down';
     }
-    if(food_close_to_up == true) {
+    else if(food_close_to_up == true) {
       gen_move = 'up';
     }
     else {
