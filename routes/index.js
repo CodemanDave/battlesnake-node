@@ -92,20 +92,20 @@ router.post('/move', function (req, res) {
       //if we have a body part to our left
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
         look_for_food();
-        if(gen_move == 'left') {
+        if(gen_move === 'left') {
           gen_move = 'right';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'right';
         }
       }
       //we must have a body part to our right or below us
       else {
         look_for_food();
-        if(gen_move == 'right') {
+        if(gen_move === 'right') {
           gen_move = 'left';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'left';
         }
       }
@@ -119,10 +119,10 @@ router.post('/move', function (req, res) {
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
         //gen_move = 'right';
         look_for_food();
-        if(gen_move == 'left') {
+        if(gen_move === 'left') {
           gen_move = 'right';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'right';
         }
       }
@@ -130,10 +130,10 @@ router.post('/move', function (req, res) {
       else {
         //gen_move = 'left';
         look_for_food();
-        if(gen_move == 'right') {
+        if(gen_move === 'right') {
           gen_move = 'left';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'left';
         }
       }
@@ -147,10 +147,10 @@ router.post('/move', function (req, res) {
       if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
         //gen_move = 'down';
         look_for_food();
-        if(gen_move == 'up') {
+        if(gen_move === 'up') {
           gen_move = 'down';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'down';
         }
       }
@@ -158,13 +158,13 @@ router.post('/move', function (req, res) {
       else {
         //gen_move = 'up';
         look_for_food();
-        if(gen_move == 'down') {
+        if(gen_move === 'down') {
           gen_move = 'up';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'up';
         }
-        else if(gen_move == 'right' || gen_move == 'left') {
+        else if(gen_move === 'right' || gen_move === 'left') {
           gen_move = 'up';
         }
       }
@@ -178,10 +178,10 @@ router.post('/move', function (req, res) {
       if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] - 1) {
         //gen_move = 'down';
         look_for_food();
-        if(gen_move == 'up'){
+        if(gen_move === 'up'){
           gen_move = 'down';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'down';
         }
       }
@@ -189,10 +189,10 @@ router.post('/move', function (req, res) {
       else {
         //gen_move = 'up';
         look_for_food();
-        if(gen_move == 'down') {
+        if(gen_move === 'down') {
           gen_move = 'up';
         }
-        else if(gen_move == 'none') {
+        else if(gen_move === 'none') {
           gen_move = 'up';
         }
       }
