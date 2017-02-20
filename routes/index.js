@@ -305,9 +305,23 @@ router.post('/move', function (req, res) {
   console.log("gen move after check_if_firstrow function:" + gen_move);
 
   check_if_bottomrow();
+
+  //tests
+  console.log("gen move after check_if_bottomrow function:" + gen_move);
+
   check_if_rightcolumn();
+
+  //tests
+  console.log("gen move after check_if_rightcolumn function:" + gen_move);
+
   check_if_leftcolumn();
+
+  //tests
+  console.log("gen move after check_if_leftcolumn function:" + gen_move);
+
   check_if_edge();
+
+  console.log("final gen_move:" + gen_move);
 
   // Response data
   var data = {
