@@ -275,13 +275,13 @@ router.post('/move', function (req, res) {
     if(food_close_to_right == true) {
       gen_move = 'right';
     }
-    else if(food_close_to_left == true) {
+    if(food_close_to_left == true) {
       gen_move = 'left';
     }
-    else if(food_close_to_down == true) {
+    if(food_close_to_down == true) {
       gen_move = 'down';
     }
-    else if(food_close_to_up == true) {
+    if(food_close_to_up == true) {
       gen_move = 'up';
     }
     else {
