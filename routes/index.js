@@ -245,10 +245,13 @@ router.post('/move', function (req, res) {
 
       //if head of snake is to right of food item
       if(req.body.snakes[0].coords[0][0] > food_array_x_coords[i]) {
-        //if there is a food item to left that is 5 spaces or less away in x-dimension
-        if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
-          //food is close by to left
-          food_close_to_left = true;
+        //as long as body part is not to left of snake
+        if(req.body.snakes[0].coords[1][0] != req.body.snakes[0].coords[0][0] - 1) {
+          //if there is a food item to left that is 5 spaces or less away in x-dimension
+          if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
+            //food is close by to left
+            food_close_to_left = true;
+          }
         }
       }
       //if food is in same column as head of snake
