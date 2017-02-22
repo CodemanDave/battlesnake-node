@@ -90,6 +90,8 @@ router.post('/move', function (req, res) {
         gen_move = 'right';
       }
     }
+
+    console.log("after check_if_edge" + gen_move);
   }
 
   function check_if_firstrow() {
