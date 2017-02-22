@@ -52,6 +52,10 @@ router.post('/move', function (req, res) {
       else if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] + 1) {
         gen_move = 'down';
       }
+      //we are at start state
+      else {
+        gen_move = 'right';
+      }
     }
     //top right corner of wall
     else if(req.body.snakes[0].coords[0][0] == (req.body.width - 1) && req.body.snakes[0].coords[0][1] == 0) {
@@ -107,6 +111,9 @@ router.post('/move', function (req, res) {
       //if we have a body part to our right
       else if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] + 1) {
         look_for_food();
+
+        console.log(gen_move);
+
         if(gen_move === 'right') {
           gen_move = 'left';
         }
