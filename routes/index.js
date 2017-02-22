@@ -115,6 +115,10 @@ router.post('/move', function (req, res) {
       else if(req.body.snakes[0].coords[1][1] == req.body.snakes[0].coords[0][1] + 1) {
         gen_move = 'left'; //just go left for one move regardless of where food is
       }
+      //we are at start state
+      else {
+        gen_move = 'left';
+      }
     }
   }
 
