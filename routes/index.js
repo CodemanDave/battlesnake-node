@@ -94,6 +94,9 @@ router.post('/move', function (req, res) {
       //if we have a body part to our left
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
         look_for_food();
+
+        console.log(gen_move);
+
         if(gen_move === 'left') {
           gen_move = 'right';
         }
