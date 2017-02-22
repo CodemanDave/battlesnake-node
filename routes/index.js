@@ -239,6 +239,7 @@ router.post('/move', function (req, res) {
           if(req.body.snakes[0].coords[0][0] >= food_array_x_coords[i] - 5 && food_array_x_coords[i] - 5 >= 0) {
             //food is close by to the right
             food_close_to_right = 1;
+            break;
           }
         }
       }
@@ -276,6 +277,7 @@ router.post('/move', function (req, res) {
             if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
               //food is close by to left
               food_close_to_left = 1;
+              break;
             }
           }
         }
