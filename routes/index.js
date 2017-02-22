@@ -92,16 +92,19 @@ router.post('/move', function (req, res) {
       //if we have a body part to our left
       if(req.body.snakes[0].coords[1][0] == req.body.snakes[0].coords[0][0] - 1) {
         look_for_food();
+        /*
         if(gen_move === 'left') {
           gen_move = 'right';
         }
         else if(gen_move === 'none') {
           gen_move = 'right';
         }
+        */
       }
       //we must have a body part to our right or below us
       else {
         look_for_food();
+        /*
         if(gen_move === 'right') {
           gen_move = 'left';
         }
@@ -111,6 +114,7 @@ router.post('/move', function (req, res) {
         else if(gen_move === 'up') {
           gen_move = 'left';
         }
+        */
       }
     }
   }
