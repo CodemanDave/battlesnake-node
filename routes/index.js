@@ -249,37 +249,40 @@ router.post('/move', function (req, res) {
         }
       }
 
-      //if head of snake is to right of food item
-      if(req.body.snakes[0].coords[0][0] > food_array_x_coords[i]) {
-        //as long as body part is not to left of snake
-        if(req.body.snakes[0].coords[1][0] != req.body.snakes[0].coords[0][0] - 1) {
-          //if there is a food item to left that is 5 spaces or less away in x-dimension
-          if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
-            //food is close by to left
-            food_close_to_left = true;
+      //only check if we arent close to food in vertical direction
+      if(food_close_to_up === false && food_close_to_down === false) {
+        //if head of snake is to right of food item
+        if(req.body.snakes[0].coords[0][0] > food_array_x_coords[i]) {
+          //as long as body part is not to left of snake
+          if(req.body.snakes[0].coords[1][0] != req.body.snakes[0].coords[0][0] - 1) {
+            //if there is a food item to left that is 5 spaces or less away in x-dimension
+            if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
+              //food is close by to left
+              food_close_to_left = true;
+            }
           }
         }
-      }
-      //if food is in same column as head of snake
-      if(req.body.snakes[0].coords[0][0] == food_array_x_coords[i]) {
-        //if head of snake is above food item
-        if(req.body.snakes[0].coords[0][1] < food_array_y_coords[i]) {
-          //if there is a food item below that is 5 spaces or less away in y-dimension
-          if(req.body.snakes[0].coords[0][1] >= food_array_y_coords[i] - 5 && food_array_y_coords[i] - 5 >= 0) {
-            //food is close by downwards
-            food_close_to_left = false;
-            food_close_to_down = true;
-            break;
+        //if food is in same column as head of snake
+        if(req.body.snakes[0].coords[0][0] == food_array_x_coords[i]) {
+          //if head of snake is above food item
+          if(req.body.snakes[0].coords[0][1] < food_array_y_coords[i]) {
+            //if there is a food item below that is 5 spaces or less away in y-dimension
+            if(req.body.snakes[0].coords[0][1] >= food_array_y_coords[i] - 5 && food_array_y_coords[i] - 5 >= 0) {
+              //food is close by downwards
+              food_close_to_left = false;
+              food_close_to_down = true;
+              break;
+            }
           }
-        }
-        //if head of snake is below food item
-        else if(req.body.snakes[0].coords[0][1] > food_array_y_coords[i]) {
-          //if there is a food item above that is 5 spaces or less away in y-dimension
-          if(req.body.snakes[0].coords[0][1] <= food_array_y_coords[i] + 5 && food_array_y_coords[i] + 5 <= (req.body.height - 1)) {
-            //food is close by upwards
-            food_close_to_left = false;
-            food_close_to_up = true;
-            break;
+          //if head of snake is below food item
+          else if(req.body.snakes[0].coords[0][1] > food_array_y_coords[i]) {
+            //if there is a food item above that is 5 spaces or less away in y-dimension
+            if(req.body.snakes[0].coords[0][1] <= food_array_y_coords[i] + 5 && food_array_y_coords[i] + 5 <= (req.body.height - 1)) {
+              //food is close by upwards
+              food_close_to_left = false;
+              food_close_to_up = true;
+              break;
+            }
           }
         }
       }
