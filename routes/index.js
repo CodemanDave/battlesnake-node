@@ -306,27 +306,32 @@ router.post('/move', function (req, res) {
     }
 
     if(food_close_to_right == 1) {
+      console.log("food close to the right");
+
       if(req.body.snakes[0].coords[1][0] != req.body.snakes[0].coords[0][0] + 1) {
         gen_move = 'right';
       }
     }
     else if(food_close_to_left == 1) {
+      console.log("food close to the left");
+
       if(req.body.snakes[0].coords[1][0] != req.body.snakes[0].coords[0][0] - 1) {
         gen_move = 'left';
       }
     }
     else if(food_close_to_down == 1) {
+      console.log("food close to down");
+
       if(req.body.snakes[0].coords[1][1] != req.body.snakes[0].coords[0][1] + 1) {
         gen_move = 'down';
       }
     }
     else if(food_close_to_up == 1) {
+      console.log("food close to up");
+
       if(req.body.snakes[0].coords[1][1] != req.body.snakes[0].coords[0][1] - 1) {
         gen_move = 'up';
       }
-    }
-    else {
-      gen_move = 'none';
     }
   }
 
