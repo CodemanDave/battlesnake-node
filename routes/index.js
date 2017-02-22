@@ -138,8 +138,8 @@ router.post('/move', function (req, res) {
         if(gen_move === 'left') {
           gen_move = 'right';
         }
-        else if(gen_move === 'none') {
-          gen_move = 'right';
+        else if(gen_move === 'down') {
+          gen_move = 'up';
         }
       }
       //we must have a body part to our right or above us
@@ -147,7 +147,7 @@ router.post('/move', function (req, res) {
         if(gen_move === 'right') {
           gen_move = 'left';
         }
-        else if(gen_move === 'none') {
+        else if(gen_move === 'up') {
           gen_move = 'left';
         }
       }
@@ -162,8 +162,8 @@ router.post('/move', function (req, res) {
         if(gen_move === 'up') {
           gen_move = 'down';
         }
-        else if(gen_move === 'none') {
-          gen_move = 'down';
+        else if(gen_move === 'right') {
+          gen_move = 'left';
         }
       }
       //we must have a body part below us or to our left
@@ -171,10 +171,7 @@ router.post('/move', function (req, res) {
         if(gen_move === 'down') {
           gen_move = 'up';
         }
-        else if(gen_move === 'none') {
-          gen_move = 'up';
-        }
-        else if(gen_move === 'right' || gen_move === 'left') {
+        else if(gen_move === 'left') {
           gen_move = 'up';
         }
       }
@@ -189,8 +186,8 @@ router.post('/move', function (req, res) {
         if(gen_move === 'up'){
           gen_move = 'down';
         }
-        else if(gen_move === 'none') {
-          gen_move = 'down';
+        else if(gen_move === 'left') {
+          gen_move = 'right';
         }
       }
       //we must have a body part below us or to our right
@@ -198,8 +195,8 @@ router.post('/move', function (req, res) {
         if(gen_move === 'down') {
           gen_move = 'up';
         }
-        else if(gen_move === 'none') {
-          gen_move = 'up';
+        else if(gen_move === 'right') {
+          gen_move = 'down';
         }
       }
     }
