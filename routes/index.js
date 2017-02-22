@@ -31,10 +31,12 @@ router.post('/move', function (req, res) {
   var food_array_x_coords = []; //array containing x coordinates of food items
   var food_array_y_coords = []; //array containing y coordinates of food items
 
-  var food_close_to_right = false;
-  var food_close_to_left = false;
-  var food_close_to_up = false;
-  var food_close_to_down = false;
+  var food_close_to_right = 0;
+  var food_close_to_left = 0;
+  var food_close_to_up = 0;
+  var food_close_to_down = 0;
+
+  var on_top_of_food = 0;
 
   //console.log(req.body.snakes[0].coords); //contains the coordinates of the snakes' coordinates
   console.log(req.body.food);
@@ -222,7 +224,7 @@ router.post('/move', function (req, res) {
           //if there is a food item to right that is 5 spaces or less away in x-dimension
           if(req.body.snakes[0].coords[0][0] >= food_array_x_coords[i] - 5 && food_array_x_coords[i] - 5 >= 0) {
             //food is close by to the right
-            food_close_to_right = true;
+            food_close_to_right = 1;
           }
         }
       }
@@ -233,8 +235,8 @@ router.post('/move', function (req, res) {
           //if there is a food item below that is 5 spaces or less away in y-dimension
           if(req.body.snakes[0].coords[0][1] >= food_array_y_coords[i] - 5 && food_array_y_coords[i] - 5 >= 0) {
             //food is close by downwards
-            food_close_to_right = false;
-            food_close_to_down = true;
+            food_close_to_right = 0;
+            food_close_to_down = 1;
             break;
           }
         }
@@ -243,15 +245,15 @@ router.post('/move', function (req, res) {
           //if there is a food item above that is 5 spaces or less away in y-dimension
           if(req.body.snakes[0].coords[0][1] <= food_array_y_coords[i] + 5 && food_array_y_coords[i] + 5 <= (req.body.height - 1)) {
             //food is close by upwards
-            food_close_to_right = false;
-            food_close_to_up = true;
+            food_close_to_right = 0;
+            food_close_to_up = 1;
             break;
           }
         }
       }
 
       //only check if we arent close to food in vertical direction
-      if(food_close_to_up === false && food_close_to_down === false) {
+      if(food_close_to_up === 0 && food_close_to_down === 0) {
         //if head of snake is to right of food item
         if(req.body.snakes[0].coords[0][0] > food_array_x_coords[i]) {
           //as long as body part is not to left of snake
@@ -259,7 +261,7 @@ router.post('/move', function (req, res) {
             //if there is a food item to left that is 5 spaces or less away in x-dimension
             if(req.body.snakes[0].coords[0][0] <= food_array_x_coords[i] + 5 && food_array_x_coords[i] + 5 <= (req.body.width - 1)) {
               //food is close by to left
-              food_close_to_left = true;
+              food_close_to_left = 1;
             }
           }
         }
@@ -270,8 +272,8 @@ router.post('/move', function (req, res) {
             //if there is a food item below that is 5 spaces or less away in y-dimension
             if(req.body.snakes[0].coords[0][1] >= food_array_y_coords[i] - 5 && food_array_y_coords[i] - 5 >= 0) {
               //food is close by downwards
-              food_close_to_left = false;
-              food_close_to_down = true;
+              food_close_to_left = 0;
+              food_close_to_down = 1;
               break;
             }
           }
@@ -280,8 +282,8 @@ router.post('/move', function (req, res) {
             //if there is a food item above that is 5 spaces or less away in y-dimension
             if(req.body.snakes[0].coords[0][1] <= food_array_y_coords[i] + 5 && food_array_y_coords[i] + 5 <= (req.body.height - 1)) {
               //food is close by upwards
-              food_close_to_left = false;
-              food_close_to_up = true;
+              food_close_to_left = 0;
+              food_close_to_up = 1;
               break;
             }
           }
@@ -289,16 +291,16 @@ router.post('/move', function (req, res) {
       }
     }
 
-    if(food_close_to_right == true) {
+    if(food_close_to_right == 1) {
       gen_move = 'right';
     }
-    else if(food_close_to_left == true) {
+    else if(food_close_to_left == 1) {
       gen_move = 'left';
     }
-    else if(food_close_to_down == true) {
+    else if(food_close_to_down == 1) {
       gen_move = 'down';
     }
-    else if(food_close_to_up == true) {
+    else if(food_close_to_up == 1) {
       gen_move = 'up';
     }
     else {
@@ -312,33 +314,11 @@ router.post('/move', function (req, res) {
   gen_move = 'up';
   store_food_location_into_array();
   look_for_food();
-
-  //tests
-  console.log("gen move after look_for_food function:" + gen_move);
-
   check_if_firstrow();
-
-  //tests
-  console.log("gen move after check_if_firstrow function:" + gen_move);
-
   check_if_bottomrow();
-
-  //tests
-  console.log("gen move after check_if_bottomrow function:" + gen_move);
-
   check_if_rightcolumn();
-
-  //tests
-  console.log("gen move after check_if_rightcolumn function:" + gen_move);
-
   check_if_leftcolumn();
-
-  //tests
-  console.log("gen move after check_if_leftcolumn function:" + gen_move);
-
   check_if_edge();
-
-  console.log("final gen_move:" + gen_move);
 
   // Response data
   var data = {
