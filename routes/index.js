@@ -253,7 +253,7 @@ router.post('/move', function (req, res) {
       }
 
       //only check if we arent close to food in vertical direction
-      if(food_close_to_up === 0 && food_close_to_down === 0) {
+      if(food_close_to_up == 0 && food_close_to_down == 0) {
         //if head of snake is to right of food item
         if(req.body.snakes[0].coords[0][0] > food_array_x_coords[i]) {
           //as long as body part is not to left of snake
