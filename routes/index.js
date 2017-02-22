@@ -105,10 +105,11 @@ router.post('/move', function (req, res) {
       //we must have a body part to our right or below us
       else {
         look_for_food();
-        /*
+
         if(gen_move === 'right') {
           gen_move = 'left';
         }
+        /*
         else if(gen_move === 'none') {
           gen_move = 'left';
         }
