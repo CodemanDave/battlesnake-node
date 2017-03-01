@@ -1,6 +1,6 @@
 /*
 Battlesnake AI: 2017 Battlesnake Competition
-Authors: Shreyas Devalapurkar
+Authors: Shreyas Devalapurkar, David Schriemer
 Date: March 4th, 2017
 */
 
